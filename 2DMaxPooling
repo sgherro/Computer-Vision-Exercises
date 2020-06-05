@@ -1,0 +1,24 @@
+import random
+import numpy as np
+
+n = random.randint(2, 6)
+iC = random.randint(2, 6)
+H = random.randint(10, 20)
+W = random.randint(10, 20)
+kH = random.randint(2, 5)
+kW = random.randint(2, 5)
+s = random.randint(2, 3)
+input = np.random.rand(n, iC, H, W).astype(np.float32)
+
+oH = (input.shape[2] - kH)//s + 1 
+oW = (input.shape[3] - kW)//s + 1 
+out = np.zeros((input.shape[0],input.shape[1],oH,oW), dtype = np.float32)
+for n in range(input.shape[0]):
+    r = 0
+    for row in range(oH):
+        c = 0
+        for col in range(oW):
+            for channel in range(input.shape[1]):
+                out[n,channel,row,col]= np.amax(input[n,channel,r:r+kH,c:c+kW])
+            c += s
+        r += s
