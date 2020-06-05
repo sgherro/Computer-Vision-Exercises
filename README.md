@@ -1,2 +1,2 @@
-# CV
-Exercise from Computer Vision course by UniMoRe.
+# Computer Vision
+Exercises from the Computer Vision course offered by UniMoRe.
